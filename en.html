@@ -1952,7 +1952,114 @@
       right: 0;
       height: 20px;
     }
+    /* ═══════════════════════════════════════════
+   CUSTOM FORM
+═══════════════════════════════════════════ */
+    .custom-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: left;
+    }
+    .custom-form label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .custom-form label .req { color: #DC2626; }
+    .custom-form label .optional { color: var(--text-muted); font-size: 0.8rem; font-weight: 400; }
+    .custom-form input[type="text"],
+    .custom-form input[type="tel"],
+    .custom-form input[type="url"],
+    .custom-form input[type="number"],
+    .custom-form select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-page);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .custom-form input:focus,
+    .custom-form select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+    }
+    .radio-group { display: flex; gap: 1rem; }
+    .radio-vertical { flex-direction: column; gap: 0.5rem; }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500 !important;
+      cursor: pointer;
+    }
+    .radio-label input {
+      width: 1.15rem;
+      height: 1.15rem;
+      accent-color: var(--blue);
+      margin: 0;
+      position: relative;
+      top: 2px;
+      flex-shrink: 0;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .form-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+    .form-result.success {
+      display: block;
+      background: rgba(0, 180, 50, 0.1);
+      color: #008a2b;
+      border: 1px solid rgba(0, 180, 50, 0.2);
+    }
+    .form-result.error {
+      display: block;
+      background: rgba(220, 38, 38, 0.1);
+      color: #DC2626;
+      border: 1px solid rgba(220, 38, 38, 0.2);
+    }
   </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '897580556657273');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=897580556657273&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -2264,11 +2371,98 @@
               docs.google.com — Marrakesh Marketing
             </div>
           </div>
-          <div class="macbook-iframe-wrap" id="formWrap">
-            <iframe id="gform"
-              src="https://docs.google.com/forms/d/e/1FAIpQLSc5AsvZZ0cgzAM4sxGP7REi2oJPfFTqbE4lUsErti-8wNw30A/viewform?embedded=true&hl=en"
-              title="Formulaire Marrakesh Marketing" marginheight="0" marginwidth="0" scrolling="auto"
-              loading="lazy">Chargement…</iframe>
+          <div class="macbook-iframe-wrap" id="formWrap" style="padding: 2.5rem; background: var(--bg-card);">
+            <form id="contactForm" class="custom-form">
+              <input type="hidden" name="access_key" value="d5fd191c-747b-4cf1-9410-42436970276a">
+              <input type="hidden" name="subject" value="Nouveau Lead - Dentiste LP (English)">
+              <input type="hidden" name="from_name" value="Système Acquisition Patients">
+              <!-- Honeypot -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <div class="form-group">
+                <label>Full Name <span class="req">*</span></label>
+                <input type="text" name="Nom Complet" required placeholder="Dr. Karim Mansouri">
+              </div>
+
+              <div class="form-group">
+                <label>Phone Number <span class="req">*</span></label>
+                <input type="tel" name="Téléphone" required placeholder="06 XX XX XX XX">
+              </div>
+
+              <div class="form-group">
+                <label>City <span class="req">*</span></label>
+                <input type="text" name="Ville" required placeholder="Casablanca">
+              </div>
+
+              <div class="form-group">
+                <label>How many patients does your clinic handle per month on average? <span class="req">*</span></label>
+                <select name="Volume Patients" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="Moins de 100">Less than 100</option>
+                  <option value="100 - 300">100 - 300</option>
+                  <option value="300 - 500">300 - 500</option>
+                  <option value="Plus de 500">More than 500</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>How many practitioners/dentists work in your clinic? <span class="req">*</span></label>
+                <input type="number" name="Nombre de praticiens" min="1" required placeholder="Ex: 3">
+              </div>
+
+              <div class="form-group">
+                <label>Most sold service? <span class="req">*</span></label>
+                <input type="text" name="Service le plus vendu" required placeholder="Ex: Implants, Orthodontics, etc.">
+              </div>
+
+              <div class="form-group">
+                <label>Have you run ads before? <span class="req">*</span></label>
+                <div class="radio-group">
+                  <label class="radio-label"><input type="radio" name="Expérience Publicitaire" value="Oui" required> <span>Yes</span></label>
+                  <label class="radio-label"><input type="radio" name="Expérience Publicitaire" value="Non" required> <span>No</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>What is your monthly budget for digital advertising (Meta)? <span class="req">*</span></label>
+                <select name="Budget Mensuel" required>
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="Moins de 3000 DH">Less than 3000 MAD</option>
+                  <option value="3000 DH - 4000 DH">3000 MAD - 4000 MAD</option>
+                  <option value="4000 DH - 5000 DH">4000 MAD - 5000 MAD</option>
+                  <option value="Plus de 5 000 DH">More than 5 000 MAD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Which package are you most interested in? <span class="req">*</span></label>
+                <div class="radio-group radio-vertical">
+                  <label class="radio-label"><input type="radio" name="Forfait Intéressé" value="Le Pack Démarrage 200 DH / 1 Semaine" required> <span>The Starter Pack 200 MAD / 1 Week</span></label>
+                  <label class="radio-label"><input type="radio" name="Forfait Intéressé" value="La Machine de Croissance 1 000 DH / Mois" required> <span>The Growth Machine 1 000 MAD / Month</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Do you want to automate communication and appointment booking with your patients using AI? <span class="req">*</span></label>
+                <div class="radio-group radio-vertical">
+                  <label class="radio-label"><input type="radio" name="Intérêt IA" value="Oui, ça m'intéresse" required> <span>Yes, I'm interested</span></label>
+                  <label class="radio-label"><input type="radio" name="Intérêt IA" value="Je veux d'abord essayer les publicités" required> <span>I want to try ads first</span></label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Link to your Instagram or Facebook page <span class="optional">(Optional)</span></label>
+                <input type="url" name="Lien Réseaux Sociaux" placeholder="https://instagram.com/your_clinic">
+              </div>
+
+              <button type="submit" class="btn btn-blue submit-btn" id="submitBtn">
+                Submit my request
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+              <div id="formResult" class="form-result"></div>
+            </form>
           </div>
         </div>
         <div class="macbook-stand-top"></div>
@@ -2628,28 +2822,61 @@
       });
     });
 
-    /* ── Google Form — dynamic iframe height ── */
-    (function () {
-      const iframe = document.getElementById('gform');
-      if (!iframe) return;
+    /* ── Web3Forms Submission ── */
+    const form = document.getElementById('contactForm');
+    const result = document.getElementById('formResult');
+    const submitBtn = document.getElementById('submitBtn');
 
-      // Poll to auto-grow iframe once loaded (cross-origin safe fallback)
-      iframe.addEventListener('load', function () {
-        // Try same-origin height detection
-        try {
-          const h = iframe.contentWindow.document.body.scrollHeight;
-          if (h > 400) iframe.style.height = h + 'px';
-        } catch (e) {
-          // Cross-origin (Google Forms) — use safe fixed tall height
-          // and use ResizeObserver on the inner document if available
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending... <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" style="transform-origin: center; animation: spin 1s linear infinite;"/></svg>';
+        
+        // Inline animation for spinner
+        if(!document.getElementById('spinStyle')) {
+            const style = document.createElement('style');
+            style.id = 'spinStyle';
+            style.innerHTML = '@keyframes spin { 100% { transform: rotate(360deg); } }';
+            document.head.appendChild(style);
         }
-        // Fallback: set generous height for the full form
-        iframe.style.height = '850px';
-      });
 
-      // Extra safety: bump height after a delay (Google Forms loads progressively)
-      setTimeout(() => { if (parseInt(iframe.style.height || 0) < 800) iframe.style.height = '850px'; }, 3000);
-    })();
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                window.location.href = 'thank-you.html';
+                form.reset();
+            } else {
+                console.log(response);
+                result.innerHTML = 'An error occurred. Please try again.';
+                result.className = 'form-result error';
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = 'An error occurred. Please check your connection.';
+            result.className = 'form-result error';
+        })
+        .then(function() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit my request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+            setTimeout(() => { result.className = 'form-result'; result.style.display = 'none'; }, 6000);
+        });
+      });
+    }
   </script>
 </body>
 
