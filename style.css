@@ -1084,16 +1084,34 @@ h1 {
     .pricing-details h3 {
         font-size: 1.3rem;
     }
+    .pricing-cost {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
     .fees-wrapper {
         gap: 16px;
         flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .fee-item {
+        align-items: center;
+    }
+    .ad-budget-note {
+        text-align: center;
     }
     .setup .setup-price, .pricing-cost .price {
         font-size: 1.5rem;
     }
-    .pricing-cost {
-        margin-left: 52px;
-        width: calc(100% - 52px);
+    .cta-group {
+        align-items: center;
+    }
+    .cta-btn {
+        width: 100%;
+        max-width: 320px;
     }
 
     .booking-box {
@@ -1233,10 +1251,6 @@ h1 {
 }
 
 @media (max-width: 600px) {
-    [dir="rtl"] .pricing-cost {
-        margin-left: 0;
-        margin-right: 52px;
-    }
     [dir="rtl"] .timeline-header {
         align-items: flex-start;
     }
